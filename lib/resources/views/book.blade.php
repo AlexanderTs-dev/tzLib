@@ -3,32 +3,26 @@
         <label for="book">Выберите автора нужной книги:</label>
         <select id='authors' name=''>
             @foreach ($authors as $author)
-            <option value='{{$author->init}}' id="{{$author->init}}"> {{$author->init}}  </option>
+            <option value='{{$author->name}}' id="{{$author->name}}"> {{$author->name}}  </option>
             @endforeach
             @csrf
         </select>
-        
+        @foreach ($el as $els)
     <table>
         <tr>
             <td>id</td> <td>Name</td> <td>author</td> <td>datepub</td>
         </tr>
-      @foreach ($book as $books)
-      @foreach ($author as $authors)
         <tr>       
-            <td>{{$books->id}}</td>
-             <td>{{$books->name}}</td> 
-             <td> {{$author->init}}</td>
-             <td>{{$books->datepub}}</td>
-        </tr>
-        @endforeach
-        @endforeach
-    </table>
+            <td>{{$els->id}}</td>
+             <td>{{$els->name}}</td> 
+            <td> {{$els->book}}</td>
+             <td>{{$els->datepub}}</td>
              
-     
-    @csrf
+         </table>
+        </tr>
+    </table>
+    @endforeach
 </form>
-@foreach ($book as $books)
-@endforeach
     @csrf
     @method('DELETE')
 

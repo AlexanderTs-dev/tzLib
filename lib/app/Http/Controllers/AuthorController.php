@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
-    public function index(Request $req){
-        $book = Book::all();
+    public function index(){
+        $book = Book::get('name');
+        $bcount = Book::get('name')->count();
         $authors = Author::all();
-        return view('author',['book'=>$book,'authors'=>$authors]);
+        
+        return view('author',['book'=>$book,'authors'=>$authors,'bcount'=>$bcount]);
        }
        public function create(Author $author){
            

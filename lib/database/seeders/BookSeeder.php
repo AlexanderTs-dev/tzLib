@@ -18,9 +18,8 @@ class BookSeeder extends Seeder
     public function run()
     {
         DB::table('books')->insert([
-            'name' => Str::random(10),
-            'authors' => Str::random(10),
-            'datepub' => Int::random(10),
+            'name' => Str::random(30),
+            'datepub' => Int::random(30),
         ]);
     }
 }

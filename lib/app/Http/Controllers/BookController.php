@@ -10,31 +10,29 @@ use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
-   public function index(Request $request,Author $authors){
-    $book = Book::all();
-    $authors->update();
+   public function index(){
+      $books = Book::all();
+      $el= Author::first()->book;
       $authors = Author::all();
-      $authors->authorselect = $request->authorselect ;
-    return view('book', ['book'=>$book,'authors'=>$authors]);
+
+   
+    
+    return view('book', ['books'=>$books,'el'=>$el,'authors'=>$authors]);
    }
    public function create(Book $book,Request $req){
+     
     $authors = new Author();
       $authors= Author::all();
-      $authors->authorselect = $req->authorselect;
-    
-      $authors->id = $req->id;
         return view('addbook',['book'=>$book,'authors'=>$authors]);
    }
    
    public function store(Request $req){
-    $authors= Author::all();
+    $authors= new Author();
        $book = new Book;
        $book->name=$req->name;
        $book->datepub = $req->datepub;
-      $authors->authorselect = $req->authorselect;
-        $authors->save();
+      $authors->init = $req->authorselect;
        $book->save();
-       
         return redirect('book');
    }
    public function show()

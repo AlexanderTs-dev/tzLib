@@ -18,7 +18,7 @@ class AuthorSeeder extends Seeder
     public function run()
     {
         DB::table('authors')->insert([
-            'init' => Int::random(15),
+            'init' => Int::random(30),
         ]);
     }
 }
